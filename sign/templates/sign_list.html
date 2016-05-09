@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign List</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Autor</td>
+        <td>Texto</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sign in signs %}
+        <tr>
+            <td>{{ sign.id }}</td>
+            <td>{{ sign.text }}</td>
+            <td>{{ sign.author }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

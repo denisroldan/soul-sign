@@ -8,29 +8,43 @@ from .forms import SignForm
 
 
 def hello_world(request):
-	return HttpResponse('Hello Talentum!')
+    return HttpResponse('Hello Talentum!')
+
+
+def list_signs(request):
+    template = loader.get_template('sign_list.html')
+    all_signs = Sign.objects.all()
+    context = {'signs': all_signs}
+    return HttpResponse(template.render(context, request))
+
+
+def sign_detail(request, id):
+    template = loader.get_template('sign_detail.html')
+    obj = get_object_or_404(Sign, id=id)
+    context = {'sign': obj}
+    return HttpResponse(template.render(context, request))
 
 
 # @login_required
 def create_sign_form(request):
-	if request.method == 'GET':
-		form = SignForm()
-		template = loader.get_template('create_sign.html')
-		context = {'form': form,}
-		return HttpResponse(template.render(context, request))
-	elif request.method == 'POST':
-		form = SignForm(request.POST)
-		if form.is_valid():
-			form.save()
-			return HttpResponse("OK!!")
-	return HttpResponseBadRequest("ERROR!!")
+    if request.method == 'GET':
+        form = SignForm()
+        template = loader.get_template('sign_create.html')
+        context = {'form': form,}
+        return HttpResponse(template.render(context, request))
+    elif request.method == 'POST':
+        form = SignForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("OK!!")
+    return HttpResponseBadRequest("ERROR!!")
 
 
 def edit_sign_form(request, id):
-	if request.method == 'POST' and request.user.is_authenticated():
-		s = get_object_or_404(Sign, id=id)
-		form = SignForm(request.POST, instance=s)
-		if form.is_valid():
-			form.save()
-			return HttpResponse("OK!!")
-	return HttpResponseBadRequest("ERROR!!")
+    if request.method == 'POST' and request.user.is_authenticated():
+        s = get_object_or_404(Sign, id=id)
+        form = SignForm(request.POST, instance=s)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("OK!!")
+    return HttpResponseBadRequest("ERROR!!")
