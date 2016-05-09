@@ -10,6 +10,7 @@ from .forms import SignForm
 def hello_world(request):
     return HttpResponse('Hello Talentum!')
 
+
 @login_required
 def list_signs(request):
     if request.user.is_superuser:
@@ -51,7 +52,7 @@ def edit_sign_form(request, id):
     if request.method == 'GET':
         form = SignForm(instance=sign_obj)
         template = loader.get_template('sign_edit.html')
-        context = {'form': form, 'sign':sign_obj}
+        context = {'form': form, 'sign': sign_obj}
         return HttpResponse(template.render(context, request))
     elif request.method == 'POST':
         form = SignForm(request.POST, instance=sign_obj)
@@ -59,4 +60,3 @@ def edit_sign_form(request, id):
             form.save()
             return redirect('detail_sign', sign_obj.id)
     return HttpResponseBadRequest("ERROR!!")
-
