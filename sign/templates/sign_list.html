@@ -9,16 +9,16 @@
     <thead>
     <tr>
         <td>ID</td>
-        <td>Autor</td>
-        <td>Texto</td>
+        <td>Author</td>
+        <td>Text</td>
     </tr>
     </thead>
     <tbody>
     {% for sign in signs %}
         <tr>
-            <td>{{ sign.id }}</td>
             <td>{{ sign.text }}</td>
             <td>{{ sign.author }}</td>
+            <td><a href="{% url 'detail_sign' sign.id %}">Details</a></td>
         </tr>
     {% endfor %}
     </tbody>
