@@ -1,5 +1,6 @@
 {% extends 'includes/base.html' %}
-{% block title %}Creación de una Sign{% endblock %}
+{% block title %}Add Sign{% endblock %}
+{% block header %}Add a new Sign{% endblock %}
 {% block content %}
 <form action="{% url 'create_sign' %}" method="post" class="form-horizontal">
     {% csrf_token %}

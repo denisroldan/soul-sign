@@ -1,5 +1,6 @@
 {% extends 'includes/base.html' %}
-{% block title %}Edición de una Sign{% endblock %}
+{% block title %}Edit Sign{% endblock %}
+{% block header %}Editing a Sign{% endblock %}
 {% block content %}
     <form action="{% url 'edit_sign' sign.id %}" method="post" class="form-horizontal">
         {% csrf_token %}
