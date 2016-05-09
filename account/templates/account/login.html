@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            <ul id="errors">
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+        {% if form.errors.username %}
+            <ul id="errors">
+                {% for error in form.errors.username %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <input type="text" name="username" placeholder="username"/>
+        <br>
+        {% if form.errors.password %}
+            <ul id="errors">
+                {% for error in form.errors.username %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <input type="password" name="password" placeholder="password"/>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
