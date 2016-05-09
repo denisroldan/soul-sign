@@ -27,9 +27,9 @@ def sign_detail(request, id):
 
 # @login_required
 def create_sign_form(request):
+    template = loader.get_template('sign_create.html')
     if request.method == 'GET':
         form = SignForm()
-        template = loader.get_template('sign_create.html')
         context = {'form': form,}
         return HttpResponse(template.render(context, request))
     elif request.method == 'POST':
@@ -37,6 +37,9 @@ def create_sign_form(request):
         if form.is_valid():
             form.save()
             return HttpResponse("OK!!")
+        else:
+            return HttpResponse(template.render({'form': form,}, request))
+
     return HttpResponseBadRequest("ERROR!!")
 
 
