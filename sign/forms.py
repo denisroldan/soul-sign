@@ -5,7 +5,7 @@ from .models import Sign
 class SignForm(ModelForm):
     class Meta:
         model = Sign
-        fields = ['author', 'text', 'expired']
+        fields = ['author', 'text', 'expires']
         labels = {
             'author': 'Autor',
         }
