@@ -1,5 +1,6 @@
 {% extends 'includes/base.html' %}
 {% block title %}Sign detail - {{ sign.text }}{% endblock %}
+{% block header %}Sign detail{% endblock %}
 {% block content %}
     <div class="row">
         <a href="{% url 'edit_sign' sign.id %}">
