@@ -6,3 +6,14 @@ class SignForm(ModelForm):
     class Meta:
         model = Sign
         fields = ['author', 'text', 'expired']
+        labels = {
+            'author': 'Autor',
+        }
+        help_texts = {
+            'author': 'El autor de la nota',
+        }
+        error_messages = {
+            'text': {
+                'max_length': "¡La nota es demasiado larga!",
+            },
+        }
