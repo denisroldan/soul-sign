@@ -5,14 +5,14 @@ from django.contrib.auth import login as django_login
 from account.forms import LoginForm
 
 
-def login(request, **kwargs):
+def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user and user.is_active:
                 django_login(request, user)
-                return render(request, 'main.html', {'form': form})
+                redirect(request.GET['next'])
             else:
                 form.add_error(None, 'Nombre de usuario o contraseña incorrectos')
     else:
