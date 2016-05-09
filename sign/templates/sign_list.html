@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign List</title>
-</head>
-<body>
+{% extends 'includes/base.html' %}
+{% block title %}Sign list{% endblock %}
+{% block content %}
 <div class="row">
         <a href="{% url 'create_sign' %}"><button type="button">Create</button></a>
     </div>
@@ -26,5 +22,4 @@
     {% endfor %}
     </tbody>
 </table>
-</body>
-</html>
+{% endblock %}

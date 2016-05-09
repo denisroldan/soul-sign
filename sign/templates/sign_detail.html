@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign Detail - {{ sign.text }}</title>
-</head>
-<body>
-<div class="container">
+{% extends 'includes/base.html' %}
+{% block title %}Sign detail - {{ sign.text }}{% endblock %}
+{% block content %}
     <div class="row">
-        <a href="{% url 'edit_sign' sign.id %}"><button type="button">Edit</button></a>
+        <a href="{% url 'edit_sign' sign.id %}">
+            <button type="button">Edit</button>
+        </a>
     </div>
-    <div class="row">
-        <div class="col-md-4"><p>{{ sign.id }}</p><br><h2>ID</h2></div>
-        <div class="col-md-4"><p>{{ sign.text }}</p><br><h2>Text</h2></div>
-        <div class="col-md-4"><p>{{ sign.author.username }}</p><br><h2>Author</h2></div>
+    <div class="row text-center">
+        <div class="col-md-4"><h1>{{ sign.id }}</h1><br>
+            <p>ID</p></div>
+        <div class="col-md-4"><h1>{{ sign.text }}</h1><br>
+            <p>Text</p></div>
+        <div class="col-md-4"><h1>{{ sign.author.username }}</h1><br>
+            <p>Author</p></div>
     </div>
 
     <div class="panel-footer">
         <a href="{% url 'list_signs' %}">Return to list</a>
     </div>
-</div>
-</body>
-</html>
+{% endblock %}

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Creación de una Sign</title>
-</head>
-<body>
+{% extends 'includes/base.html' %}
+{% block title %}Creación de una Sign{% endblock %}
+{% block content %}
 <form action="{% url 'create_sign' %}" method="post" class="form-horizontal">
     {% csrf_token %}
     {% for field in form %}
@@ -27,6 +23,4 @@
             <button class="btn btn-primary" value="Submit" type="submit">Guardar</button>
         </div>
     </div>
-</form>
-</body>
-</html>
+{% endblock %}
