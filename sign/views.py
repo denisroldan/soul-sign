@@ -40,7 +40,7 @@ def create_sign_form(request):
         form = SignForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponse("OK!!")
+            return redirect('detail_sign', form.instance.id)
         else:
             return HttpResponse(template.render({'form': form,}, request))
 
