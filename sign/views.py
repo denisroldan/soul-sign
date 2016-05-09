@@ -10,10 +10,13 @@ from .forms import SignForm
 def hello_world(request):
     return HttpResponse('Hello Talentum!')
 
-
+@login_required
 def list_signs(request):
+    if request.user.is_superuser:
+        all_signs = Sign.objects.all()
+    else:
+        all_signs = Sign.objects.filter(author=request.user)
     template = loader.get_template('sign_list.html')
-    all_signs = Sign.objects.all()
     context = {'signs': all_signs}
     return HttpResponse(template.render(context, request))
 
