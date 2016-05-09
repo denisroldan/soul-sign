@@ -1,0 +1,25 @@
+{% extends 'includes/base.html' %}
+{% block title %}Sign list{% endblock %}
+{% block content %}
+<div class="row">
+        <a href="{% url 'create_sign' %}"><button type="button">Create</button></a>
+    </div>
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Author</td>
+        <td>Text</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sign in signs %}
+        <tr>
+            <td>{{ sign.text }}</td>
+            <td>{{ sign.author }}</td>
+            <td><a href="{% url 'detail_sign' sign.id %}">Details</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
