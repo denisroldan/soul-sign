@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.template import loader
 
 from .models import Sign
@@ -41,10 +41,16 @@ def create_sign_form(request):
 
 
 def edit_sign_form(request, id):
-    if request.method == 'POST' and request.user.is_authenticated():
-        s = get_object_or_404(Sign, id=id)
-        form = SignForm(request.POST, instance=s)
+    sign_obj = get_object_or_404(Sign, id=id)
+    if request.method == 'GET':
+        form = SignForm(instance=sign_obj)
+        template = loader.get_template('sign_edit.html')
+        context = {'form': form, 'sign':sign_obj}
+        return HttpResponse(template.render(context, request))
+    elif request.method == 'POST':
+        form = SignForm(request.POST, instance=sign_obj)
         if form.is_valid():
             form.save()
-            return HttpResponse("OK!!")
+            return redirect('detail_sign', sign_obj.id)
     return HttpResponseBadRequest("ERROR!!")
+
