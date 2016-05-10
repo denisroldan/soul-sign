@@ -12,7 +12,7 @@ def login(request):
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user and user.is_active:
                 django_login(request, user)
-                redirect(request.GET['next'])
+                return redirect(request.GET['next'])
             else:
                 form.add_error(None, 'Nombre de usuario o contraseña incorrectos')
     else:
