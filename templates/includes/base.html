@@ -11,7 +11,7 @@
 <div class="container">
     <div class="page-header">
         {% if request.user.is_authenticated %}
-        <div class="pull-right"><a href="#"><span class="glyphicon glyphicon-log-out"> Logout</span></a></div>
+        <div class="pull-right"><a href="{% url 'account:logout' %}"><span class="glyphicon glyphicon-log-out"> Logout</span></a></div>
         {% endif %}
         <h1>Soul Sign
             <small>{% block header %}{% endblock %}</small>
