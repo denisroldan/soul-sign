@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sign',
+    'account',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -146,3 +147,5 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     os.path.join(BASE_DIR, "design/static/design_assets"),
 )
+
+LOGIN_URL = '/account/login'
