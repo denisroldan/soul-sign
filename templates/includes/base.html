@@ -9,11 +9,16 @@
 </head>
 <body>
 <div class="container">
-<div class="page-header">
-  <h1>Soul Sign <small>{% block header %}{% endblock %}</small></h1>
-</div>
-{% block content %}
-{% endblock %}
+    <div class="page-header">
+        {% if request.user.is_authenticated %}
+        <div class="pull-right"><a href="#"><span class="glyphicon glyphicon-log-out"> Logout</span></a></div>
+        {% endif %}
+        <h1>Soul Sign
+            <small>{% block header %}{% endblock %}</small>
+        </h1>
+    </div>
+    {% block content %}
+    {% endblock %}
 </div>
 </body>
 </html>
