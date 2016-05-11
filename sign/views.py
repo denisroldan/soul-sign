@@ -60,3 +60,17 @@ def edit_sign_form(request, id):
             form.save()
             return redirect('detail_sign', sign_obj.id)
     return HttpResponseBadRequest("ERROR!!")
+
+
+class SignListView(ListView):
+    model = Sign
+    template_name = 'sign_list.html'
+    context_object_name = "signs"
+    paginate_by = 20
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return redirect('account:login')
+        else:
+            return super().dispatch(request, *args, **kwargs)
+
