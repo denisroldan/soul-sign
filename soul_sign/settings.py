@@ -122,13 +122,14 @@ TEMPLATES = [
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = ''
 MEDIA_URL = '/media/'
-MEDIA_ROOT = ''
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, "design/static/design_assets"),
 )
 
 LOGIN_URL = '/account/login'
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'translations'),
+)

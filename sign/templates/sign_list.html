@@ -1,5 +1,6 @@
 {% extends 'includes/base.html' %}
 {% load humanize %}
+{% load i18n %}
 {% block title %}Sign list{% endblock %}
 {% block header %}Sign list{% endblock %}
 {% block content %}
@@ -12,9 +13,10 @@
     <table class="table">
         <thead>
         <tr>
-            <td><h4>ID</h4></td>
-            <td><h4>Author</h4></td>
-            <td><h4>Text</h4></td>
+            <td><h4>{% trans "Text" %}</h4></td>
+            <td><h4>{% trans "Author" %}</h4></td>
+            <td><h4>{% trans "Date" %}</h4></td>
+            <td><h4>{% trans "Details" %}</h4></td>
         </tr>
         </thead>
         <tbody>

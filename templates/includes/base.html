@@ -1,9 +1,10 @@
 {% load staticfiles %}
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Soul Sign - {% block title %}{% endblock %}</title>
+    <title>{% trans "Soul Sign" %} - {% block title %}{% endblock %}</title>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     {% block extrastyle %}{% endblock %}
 </head>
@@ -13,12 +14,13 @@
         {% if request.user.is_authenticated %}
         <div class="pull-right"><a href="{% url 'account:logout' %}"><span class="glyphicon glyphicon-log-out"> Logout</span></a></div>
         {% endif %}
-        <h1>Soul Sign
+        <h1>{% trans "Soul Sign" %}
             <small>{% block header %}{% endblock %}</small>
         </h1>
     </div>
     {% block content %}
     {% endblock %}
 </div>
+<div class="footer text-center">© Soul Sign 2016 (Talentum Jaen)</div>
 </body>
 </html>

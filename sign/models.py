@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.six import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
 
 
 @python_2_unicode_compatible
@@ -14,5 +15,5 @@ class Sign(models.Model):
         return "{0} created by {1} on {2}".format(self.text, self.author, self.created)
 
     class Meta:
-        verbose_name = "Soul Sign"
-        verbose_name_plural = "Soul Signs"
+        verbose_name = _("Soul Sign")
+        verbose_name_plural = _("Soul Signs")
