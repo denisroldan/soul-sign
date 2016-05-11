@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'rest_framework',
     'debug_toolbar',
     'sign',
     'account',
@@ -134,3 +135,9 @@ LOGIN_URL = '/account/login'
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'translations'),
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

@@ -3,7 +3,9 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, redirect
 from django.template import loader
 from django.views.generic import ListView
+from rest_framework.viewsets import ModelViewSet
 
+from sign.serializers import SignSerializer
 from .models import Sign
 from .forms import SignForm
 
@@ -83,3 +85,8 @@ class SignListView(ListView):
 
     def get_queryset(self):
         return Sign.objects.all().select_related('author')
+
+
+class SignViewSet(ModelViewSet):
+    queryset = Sign.objects.all().select_related('author')
+    serializer_class = SignSerializer
