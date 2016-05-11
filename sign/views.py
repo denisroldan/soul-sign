@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, redirect
 from django.template import loader
+from django.views.generic import ListView
 
 from .models import Sign
 from .forms import SignForm
@@ -22,14 +23,17 @@ def list_signs(request):
     return HttpResponse(template.render(context, request))
 
 
+@login_required
 def sign_detail(request, id):
     template = loader.get_template('sign_detail.html')
-    obj = get_object_or_404(Sign, id=id)
+    obj = get_object_or_404(Sign, id=id, author=request.user)
+    if not request.user.is_superuser and obj.author != request.user:
+            return HttpResponseBadRequest()
     context = {'sign': obj}
     return HttpResponse(template.render(context, request))
 
 
-# @login_required
+@login_required
 def create_sign_form(request):
     template = loader.get_template('sign_create.html')
     if request.method == 'GET':
@@ -47,8 +51,11 @@ def create_sign_form(request):
     return HttpResponseBadRequest("ERROR!!")
 
 
+@login_required
 def edit_sign_form(request, id):
     sign_obj = get_object_or_404(Sign, id=id)
+    if not request.user.is_superuser and sign_obj.author != request.user:
+        return HttpResponseBadRequest()
     if request.method == 'GET':
         form = SignForm(instance=sign_obj)
         template = loader.get_template('sign_edit.html')
