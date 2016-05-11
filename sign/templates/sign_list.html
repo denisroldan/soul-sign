@@ -1,4 +1,5 @@
 {% extends 'includes/base.html' %}
+{% load humanize %}
 {% block title %}Sign list{% endblock %}
 {% block header %}Sign list{% endblock %}
 {% block content %}
@@ -20,7 +21,8 @@
         {% for sign in signs %}
             <tr>
                 <td>{{ sign.text }}</td>
-                <td>{{ sign.author }}</td>
+                <td>{{ sign.author.username }}</td>
+                <td>{{ sign.created|naturaltime|capfirst }}</td>
                 <td><a href="{% url 'detail_sign' sign.id %}">Details</a></td>
             </tr>
         {% endfor %}
