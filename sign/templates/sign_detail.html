@@ -1,22 +1,23 @@
 {% extends 'includes/base.html' %}
-{% block title %}Sign detail - {{ sign.text }}{% endblock %}
-{% block header %}Sign detail{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Sign detail" %} - {{ sign.text }}{% endblock %}
+{% block header %}{% trans "Sign detail" %}{% endblock %}
 {% block content %}
     <div class="row">
         <a href="{% url 'edit_sign' sign.id %}">
-            <button type="button">Edit</button>
+            <button type="button">{% trans "Edit" %}</button>
         </a>
     </div>
     <div class="row text-center">
         <div class="col-md-4"><h1>{{ sign.id }}</h1><br>
-            <p>ID</p></div>
+            <p>{% trans "ID" %}</p></div>
         <div class="col-md-4"><h1>{{ sign.text }}</h1><br>
-            <p>Text</p></div>
+            <p>{% trans "Text" %}</p></div>
         <div class="col-md-4"><h1>{{ sign.author.username }}</h1><br>
-            <p>Author</p></div>
+            <p>{% trans "Author" %}</p></div>
     </div>
 
     <div class="panel-footer">
-        <a href="{% url 'list_signs' %}">Return to list</a>
+        <a href="{% url 'list_signs' %}">{% trans "Return to list" %}</a>
     </div>
 {% endblock %}
