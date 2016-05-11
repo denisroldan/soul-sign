@@ -21,11 +21,11 @@ from django.contrib import admin
 
 from sign.urls import urlpatterns as sign_urls
 from sign.views import hello_world
-from account.urls import patterns
+from account.urls import patterns as account_urls
 
 urlpatterns = [
-    url(r'^account/', include(patterns, namespace='account')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^account/', include(account_urls, namespace='account')),
+    url(r'^ultrasecretadmin/', admin.site.urls),
     url(r'^sign/', include(sign_urls)),
     url(r'^$', hello_world)
 ]
