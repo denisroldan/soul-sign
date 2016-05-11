@@ -2,6 +2,7 @@
 {% block title %}Sign list{% endblock %}
 {% block header %}Sign list{% endblock %}
 {% block content %}
+    {% include 'includes/notice.html' %}
     <div class="row">
         <a href="{% url 'create_sign' %}">
             <button class="btn btn-block btn-default" type="button"><span class="glyphicon glyphicon-plus"></span> Create</button>
