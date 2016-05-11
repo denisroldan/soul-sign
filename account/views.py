@@ -9,10 +9,13 @@ def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password']
+            )
             if user and user.is_active:
                 django_login(request, user)
-                return redirect(request.GET['next'])
+                return redirect(request.GET.get('next', '/sign/'))
             else:
                 form.add_error(None, 'Nombre de usuario o contraseña incorrectos')
     else:
