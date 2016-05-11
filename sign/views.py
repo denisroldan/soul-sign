@@ -14,9 +14,9 @@ def hello_world(request):
 @login_required
 def list_signs(request):
     if request.user.is_superuser:
-        all_signs = Sign.objects.all()
+        all_signs = Sign.objects.all().prefetch_related('author')
     else:
-        all_signs = Sign.objects.filter(author=request.user)
+        all_signs = Sign.objects.prefetch_related('author').filter(author=request.user)
     template = loader.get_template('sign_list.html')
     context = {'signs': all_signs}
     return HttpResponse(template.render(context, request))
@@ -74,3 +74,5 @@ class SignListView(ListView):
         else:
             return super().dispatch(request, *args, **kwargs)
 
+    def get_queryset(self):
+        return Sign.objects.all().prefetch_related('author')
