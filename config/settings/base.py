@@ -54,19 +54,10 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.locale.LocaleMiddleware',
 ]
 
-ROOT_URLCONF = 'soul_sign.urls'
+ROOT_URLCONF = 'config.urls'
 
-WSGI_APPLICATION = 'soul_sign.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -106,7 +97,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, "..", 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -128,13 +119,13 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "..", "static"),
 )
 
 LOGIN_URL = '/account/login'
 
 LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'translations'),
+    os.path.join(BASE_DIR, '..', 'translations'),
 )
 
 REST_FRAMEWORK = {
