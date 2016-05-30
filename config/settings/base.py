@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'rest_framework',
+    'django_rq',
+    'django_rq_dashboard',
     'debug_toolbar',
     'sign',
     'account',
