@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^sign/', include(sign_urls)),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-docs/', include('rest_framework_swagger.urls')),
     url(r'^auth/', include('rest_framework_social_oauth2.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^$', hello_world),
@@ -39,6 +40,7 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL,
+                                                                                            document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = _('Soul Sign Admin Site')
