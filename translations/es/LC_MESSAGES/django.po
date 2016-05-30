@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-11 09:33+0000\n"
+"POT-Creation-Date: 2016-05-30 21:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: account/templates/account/login.html:74 sign/models.py:18
+#: templates/includes/base.html:7 templates/includes/base.html:21
+msgid "Soul Sign"
+msgstr "Soul Sign"
+
+#: account/templates/account/login.html:91
+msgid "User"
+msgstr "Usuario"
+
+#: account/templates/account/login.html:104
+msgid "Password"
+msgstr "Contraseña"
+
+#: account/templates/account/login.html:118
+msgid "Login"
+msgstr "Login"
+
 #: account/views.py:21
 msgid "Invalid username or password"
 msgstr "Usuario o contraseña inválidos"
 
-#: sign/forms.py:12 sign/templates/sign_detail.html:17
-#: sign/templates/sign_list.html:17
-msgid "Author"
-msgstr "Autor"
+#: config/urls.py:46
+msgid "Soul Sign Admin Site"
+msgstr "Administración de 'Nota del alma'"
 
-#: sign/forms.py:15
-msgid "Sign's author"
-msgstr "Autor de la nota"
+#: sign/forms.py:15 sign/templates/sign_detail.html:15
+#: sign/templates/sign_list.html:16
+msgid "Text"
+msgstr "Texto"
 
-#: sign/forms.py:19
+#: sign/forms.py:18
+msgid "Sign text"
+msgstr "Texto de la nota"
+
+#: sign/forms.py:22
 msgid "Sign text is too long!"
 msgstr "¡El texto de la nota es demasiado largo!"
 
@@ -55,11 +76,6 @@ msgstr "Caducidad"
 #, python-brace-format
 msgid "{0} created by {1} on {2}"
 msgstr "{0} creada por {1} el {2}"
-
-#: sign/models.py:18 templates/includes/base.html:7
-#: templates/includes/base.html:17
-msgid "Soul Sign"
-msgstr "Nota del alma"
 
 #: sign/models.py:19
 msgid "Soul Signs"
@@ -89,9 +105,9 @@ msgstr "Editar"
 msgid "ID"
 msgstr "ID"
 
-#: sign/templates/sign_detail.html:15 sign/templates/sign_list.html:16
-msgid "Text"
-msgstr "Texto"
+#: sign/templates/sign_detail.html:17 sign/templates/sign_list.html:17
+msgid "Author"
+msgstr "Autor"
 
 #: sign/templates/sign_detail.html:21
 msgid "Return to list"
@@ -126,14 +142,16 @@ msgstr "Detalles"
 msgid "There are {0} soul signs in our systems!"
 msgstr "¡Hay {0} notas del alma en el sistema!"
 
-#: soul_sign/urls.py:39
-msgid "Soul Sign Admin Site"
-msgstr "Administración de 'Nota del alma'"
-
-#: templates/includes/base.html:15
+#: templates/includes/base.html:19
 msgid "Logout"
 msgstr "Salir"
 
-#: templates/includes/base.html:24
-msgid "© Soul Sign 2016 (Talentum Jaen)"
-msgstr ""
+#: templates/includes/base.html:28
+msgid "© Soul Sign 2016"
+msgstr "© Soul Sign 2016"
+
+#~ msgid "Texto"
+#~ msgstr "Texto"
+
+#~ msgid "Sign's author"
+#~ msgstr "Autor de la nota"

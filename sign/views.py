@@ -28,7 +28,7 @@ def list_signs(request):
 @login_required
 def sign_detail(request, id):
     template = loader.get_template('sign_detail.html')
-    obj = get_object_or_404(Sign, id=id, author=request.user)
+    obj = get_object_or_404(Sign, id=id)
     if not request.user.is_superuser and obj.author != request.user:
             return HttpResponseBadRequest()
     context = {'sign': obj}

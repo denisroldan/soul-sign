@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'corsheaders',
+    'datetimewidget',
     'rest_framework',
     'oauth2_provider',
     'social.apps.django_app.default',
