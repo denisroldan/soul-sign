@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout as django_logout, authenticate
 from django.contrib.auth import login as django_login
+from django.utils.translation import ugettext_lazy as _
 
 from account.forms import LoginForm
 
@@ -17,7 +18,7 @@ def login(request):
                 django_login(request, user)
                 return redirect(request.GET.get('next', '/sign/'))
             else:
-                form.add_error(None, 'Nombre de usuario o contraseña incorrectos')
+                form.add_error(None, _('Invalid username or password'))
     else:
         form = LoginForm()
 

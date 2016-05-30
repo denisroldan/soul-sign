@@ -6,13 +6,13 @@ from django.utils.translation import ugettext_lazy as _
 
 @python_2_unicode_compatible
 class Sign(models.Model):
-    author = models.ForeignKey(User)
-    text = models.CharField(max_length=200)
-    created = models.DateTimeField(auto_now_add=True)
-    expires = models.DateTimeField(null=True, blank=True)
+    author = models.ForeignKey(User, help_text=_("Soul sign's author"))
+    text = models.CharField(max_length=200, help_text=_("Description of the sign"))
+    created = models.DateTimeField(auto_now_add=True, help_text=_("Creation time"))
+    expires = models.DateTimeField(null=True, blank=True, help_text=_("Time to live"))
 
     def __str__(self):
-        return "{0} created by {1} on {2}".format(self.text, self.author, self.created)
+        return _("{0} created by {1} on {2}").format(self.text, self.author, self.created)
 
     class Meta:
         verbose_name = _("Soul Sign")

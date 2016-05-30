@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-10 16:11+0000\n"
+"POT-Creation-Date: 2016-05-11 09:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,44 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: account/views.py:21
+msgid "Invalid username or password"
+msgstr "Usuario o contraseña inválidos"
+
+#: sign/forms.py:12 sign/templates/sign_detail.html:17
+#: sign/templates/sign_list.html:17
+msgid "Author"
+msgstr "Autor"
+
+#: sign/forms.py:15
+msgid "Sign's author"
+msgstr "Autor de la nota"
+
+#: sign/forms.py:19
+msgid "Sign text is too long!"
+msgstr "¡El texto de la nota es demasiado largo!"
+
+#: sign/models.py:9
+msgid "Soul sign's author"
+msgstr "Notas del alma"
+
+#: sign/models.py:10
+msgid "Description of the sign"
+msgstr "Descripción de la señal"
+
+#: sign/models.py:11
+msgid "Creation time"
+msgstr "Fecha de creación"
+
+#: sign/models.py:12
+msgid "Time to live"
+msgstr "Caducidad"
+
+#: sign/models.py:15
+#, python-brace-format
+msgid "{0} created by {1} on {2}"
+msgstr "{0} creada por {1} el {2}"
 
 #: sign/models.py:18 templates/includes/base.html:7
 #: templates/includes/base.html:17
@@ -27,18 +65,75 @@ msgstr "Nota del alma"
 msgid "Soul Signs"
 msgstr "Notas del alma"
 
-#: sign/templates/sign_list.html:16
+#: sign/templates/sign_create.html:3
+msgid "Add Sign"
+msgstr "Añadir señal"
+
+#: sign/templates/sign_create.html:4
+msgid "Add a new Sign"
+msgstr "Añadir una nueva señal"
+
+#: sign/templates/sign_create.html:25 sign/templates/sign_edit.html:25
+msgid "Save"
+msgstr "Guardar"
+
+#: sign/templates/sign_detail.html:3 sign/templates/sign_detail.html:4
+msgid "Sign detail"
+msgstr "Detalles de la señal"
+
+#: sign/templates/sign_detail.html:8
+msgid "Edit"
+msgstr "Editar"
+
+#: sign/templates/sign_detail.html:13
+msgid "ID"
+msgstr "ID"
+
+#: sign/templates/sign_detail.html:15 sign/templates/sign_list.html:16
 msgid "Text"
 msgstr "Texto"
 
-#: sign/templates/sign_list.html:17
-msgid "Author"
-msgstr "Autor"
+#: sign/templates/sign_detail.html:21
+msgid "Return to list"
+msgstr "Volver a la lista"
+
+#: sign/templates/sign_edit.html:3
+msgid "Edit Sign"
+msgstr "Editar señal"
+
+#: sign/templates/sign_edit.html:4
+msgid "Editing a Sign"
+msgstr "Editando señal"
+
+#: sign/templates/sign_list.html:4 sign/templates/sign_list.html:5
+msgid "Sign list"
+msgstr "Listado de notas"
+
+#: sign/templates/sign_list.html:10
+msgid "Create"
+msgstr "Crear"
 
 #: sign/templates/sign_list.html:18
 msgid "Date"
 msgstr "Fecha"
 
-#: sign/templates/sign_list.html:19
+#: sign/templates/sign_list.html:19 sign/templates/sign_list.html:28
 msgid "Details"
 msgstr "Detalles"
+
+#: sign/templatetags/signtags.py:11
+#, python-brace-format
+msgid "There are {0} soul signs in our systems!"
+msgstr "¡Hay {0} notas del alma en el sistema!"
+
+#: soul_sign/urls.py:39
+msgid "Soul Sign Admin Site"
+msgstr "Administración de 'Nota del alma'"
+
+#: templates/includes/base.html:15
+msgid "Logout"
+msgstr "Salir"
+
+#: templates/includes/base.html:24
+msgid "© Soul Sign 2016 (Talentum Jaen)"
+msgstr ""
