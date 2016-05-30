@@ -89,3 +89,4 @@ target/
 
 /config/settings/production.py
 *.sqlite3
+/config/settings/social_credentials.py

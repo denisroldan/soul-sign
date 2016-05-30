@@ -7,12 +7,12 @@ from .models import Sign
 class SignForm(ModelForm):
     class Meta:
         model = Sign
-        fields = ['author', 'text', 'expires']
+        fields = ['text', 'expires']
         labels = {
-            'author': _('Author'),
+            'text': _('Texto'),
         }
         help_texts = {
-            'author': _("Sign's author"),
+            'text': _("Texto de la nota"),
         }
         error_messages = {
             'text': {

@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/1.9/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
-
 import os
+from .social_credentials import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'corsheaders',
     'rest_framework',
+    'oauth2_provider',
+    'social.apps.django_app.default',
+    'rest_framework_social_oauth2',
     'django_rq',
     'django_rq_dashboard',
     'debug_toolbar',
@@ -63,7 +66,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'config.urls'
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -116,6 +118,8 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 'django.core.context_processors.request',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -128,7 +132,33 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "..", "static"),
 )
 
+AUTHENTICATION_BACKENDS = (
+    # 'social.backends.open_id.OpenIdAuth',
+    # 'social.backends.google.GoogleOpenId',
+    # 'social.backends.google.GoogleOAuth2',
+    # 'social.backends.google.GoogleOAuth',
+
+    # Twitter
+    'social.backends.twitter.TwitterOAuth',
+
+    # Facebook OAuth2
+    'social.backends.facebook.FacebookAppOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
+
+    # django-rest-framework-social-oauth2
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+
+    # Django
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 LOGIN_URL = '/account/login'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/sign/'
+
+
+# Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from facebook.
+# Email is not sent by default, to get it, you must request the email permission:
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, '..', 'translations'),
@@ -136,7 +166,11 @@ LOCALE_PATHS = (
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',
+    ),
 }

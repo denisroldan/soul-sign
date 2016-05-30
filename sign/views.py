@@ -45,6 +45,7 @@ def create_sign_form(request):
     elif request.method == 'POST':
         form = SignForm(request.POST)
         if form.is_valid():
+            form.instance.author = request.user
             form.save()
             return redirect('detail_sign', form.instance.id)
         else:

@@ -20,17 +20,19 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 from sign.urls import urlpatterns as sign_urls
-from sign.routers import router as signrouter
 from sign.views import hello_world
 from account.urls import patterns as account_urls
+from .routers import router
 
 ADMIN_ENDPOINT = 'ultrasecretadmin'
 
 urlpatterns = [
     url(r'^account/', include(account_urls, namespace='account')),
     url(r'^sign/', include(sign_urls)),
-    url(r'^api/', include(signrouter.urls)),
+    url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^auth/', include('rest_framework_social_oauth2.urls')),
+    url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^$', hello_world),
     url(r'^' + ADMIN_ENDPOINT + '/', admin.site.urls),
     url(r'^' + ADMIN_ENDPOINT + '/rq/', include('django_rq_dashboard.urls')),
