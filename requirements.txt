@@ -21,6 +21,7 @@ defusedxml==0.4.1
 Django==1.9.6
 django-braces==1.8.1
 django-cors-headers==1.1.0
+django-datetime-widget==0.9.3
 django-debug-toolbar==1.4
 django-model-utils==2.5
 django-oauth-toolkit==0.10.0
