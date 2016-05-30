@@ -11,7 +11,8 @@ from .forms import SignForm
 
 
 def hello_world(request):
-    return HttpResponse('Hello Talentum!')
+    return redirect('list_signs')
+    # return HttpResponse('Hello Talentum!')
 
 
 @login_required
