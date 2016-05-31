@@ -17,6 +17,23 @@
             <p>{% trans "Author" %}</p></div>
     </div>
 
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="">{% trans 'Location' %}</h4>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-3">
+                <label>Latitud: </label> {{ sign.location.latitude }}
+                <br>
+                <label>Longitud: </label> {{ sign.location.longitude }}
+            </div>
+            <div class="col-md-9">
+            </div>
+
+
+        </div>
+    </div>
+
     <div class="panel-footer">
         <a href="{% url 'list_signs' %}">{% trans "Return to list" %}</a>
     </div>

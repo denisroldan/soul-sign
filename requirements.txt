@@ -19,10 +19,12 @@ croniter==0.3.12
 daphne==0.12.1
 defusedxml==0.4.1
 Django==1.9.6
+django-appconf==1.0.2
 django-braces==1.8.1
 django-cors-headers==1.1.0
 django-datetime-widget==0.9.3
 django-debug-toolbar==1.4
+django-geoposition==0.2.2
 django-model-utils==2.5
 django-oauth-toolkit==0.10.0
 django-pyodbc-azure==1.9.3.0

@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, redirect
 from django.template import loader
 from django.views.generic import ListView
+from geoposition import Geoposition
 from rest_framework.viewsets import ModelViewSet
 
 from sign.serializers import SignSerializer
@@ -40,7 +41,7 @@ def sign_detail(request, id):
 def create_sign_form(request):
     template = loader.get_template('sign_create.html')
     if request.method == 'GET':
-        form = SignForm()
+        form = SignForm(initial={'location': Geoposition(40.3898955292157, -3.6281490325927734)})
         context = {'form': form,}
         return HttpResponse(template.render(context, request))
     elif request.method == 'POST':

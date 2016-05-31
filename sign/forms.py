@@ -1,6 +1,8 @@
 from datetimewidget.widgets import DateTimeWidget
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from geoposition import Geoposition
+from geoposition.fields import GeopositionField
 
 from .models import Sign
 
@@ -10,7 +12,7 @@ class SignForm(forms.ModelForm):
 
     class Meta:
         model = Sign
-        fields = ['text', 'expires']
+        fields = ['text', 'expires', 'location']
         labels = {
             'text': _('Text'),
         }

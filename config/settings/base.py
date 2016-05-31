@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'corsheaders',
+    'geoposition',
     'datetimewidget',
     'rest_framework',
     'oauth2_provider',
@@ -178,3 +179,14 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
 }
+
+GEOPOSITIONMAP_MAP_OPTIONS = {
+    'minZoom': 3,
+    'maxZoom': 15,
+    'zoom': 10,
+}
+
+GEOPOSITIONMAP_MARKER_OPTIONS = {
+    'cursor': 'move'
+}
+GEOPOSITION_MAP_WIDGET_HEIGHT = 480

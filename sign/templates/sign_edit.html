@@ -5,6 +5,7 @@
 {% block content %}
     <form action="{% url 'edit_sign' sign.id %}" method="post" class="form-horizontal">
         {% csrf_token %}
+        {{ form.media }}
         {% for field in form %}
             <div class="form-group">
                 <label class="col-sm-2 control-label">{{ field.label_tag }}</label>
