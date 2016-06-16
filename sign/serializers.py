@@ -21,7 +21,7 @@ class SignCreateSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Sign
-		fields = ('text', 'expires', 'location', 'author')
+		fields = ('text', 'expires', 'location', 'author', 'id')
 
 	def to_representation(self, instance):
 		data = super(SignCreateSerializer, self).to_representation(instance)
