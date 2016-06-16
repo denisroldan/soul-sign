@@ -6,7 +6,7 @@ from django.views.generic import ListView
 from geoposition import Geoposition
 from rest_framework.viewsets import ModelViewSet
 
-from sign.serializers import SignSerializer
+from sign.serializers import SignSerializer, SignCreateSerializer
 from .models import Sign
 from .forms import SignForm
 
@@ -93,3 +93,9 @@ class SignListView(ListView):
 class SignViewSet(ModelViewSet):
     queryset = Sign.objects.all().select_related('author')
     serializer_class = SignSerializer
+
+    def get_serializer_class(self):
+        if self.action == 'create':
+            return SignCreateSerializer
+        else:
+            return SignSerializer
